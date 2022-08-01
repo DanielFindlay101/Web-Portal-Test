@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { BottomNavBar, NavRoute } from './components/library/BottomNavBar';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthRoutes } from './pages/auth';
+import Calls from './pages/Calls';
 import { JobRoutes } from './pages/jobs';
 import { theme } from './theme';
 
@@ -91,6 +92,7 @@ const AuthenticatedRoutes = () => (
     <Routes>
       <Route path='/' element={null} />
       <Route path='/jobs' element={<JobRoutes />} />
+      <Route path='/home' element={<Calls />} />
     </Routes>
     <BottomNavBar routes={routes} subNavRoutes={subRoutes} />
   </Box>

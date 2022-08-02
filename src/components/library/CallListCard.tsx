@@ -1,7 +1,7 @@
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import PhoneMissedIcon from '@mui/icons-material/PhoneMissed';
-import { Box, Stack, styled, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
 type Call = {
   name: string;

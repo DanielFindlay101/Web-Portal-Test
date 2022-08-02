@@ -3,33 +3,31 @@ import CallListCard from '../components/library/CallListCard';
 const callData = [
   {
     id: 1,
-    headerText: 'Jane Smith',
-    bodyText: '(+44) 7651 238 474',
-    missedCall: false
+    name: 'Jane Smith',
+    phoneNumber: '(+44) 7651 238 474',
+    missed: false,
+    createdAt: '07:00'
   },
   {
     id: 2,
-    headerText: 'Contact Name',
-    bodyText: '(+44) 7651 238 474',
-    missedCall: false
+    name: 'Contact Name',
+    phoneNumber: '(+44) 7651 238 474',
+    missed: false,
+    createdAt: '15:00'
   },
   {
     id: 3,
-    headerText: 'Contact Name',
-    bodyText: '(+44) 7651 238 474',
-    missedCall: true
+    name: 'Contact Name',
+    phoneNumber: '(+44) 7651 238 474',
+    missed: true,
+    createdAt: '14:23'
   },
   {
     id: 4,
-    headerText: 'Contact Name',
-    bodyText: '(+44) 765 238 474',
-    missedCall: true
-  },
-  {
-    id: 5,
-    headerText: 'Contact Name',
-    bodyText: '(+44) 7651 238 474',
-    missedCall: false
+    name: 'Contact Name',
+    phoneNumber: '(+44) 7651 238 474',
+    missed: true,
+    createdAt: '14:23'
   }
 ];
 

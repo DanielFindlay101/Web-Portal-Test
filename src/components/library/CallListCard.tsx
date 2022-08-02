@@ -3,57 +3,50 @@ import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import PhoneMissedIcon from '@mui/icons-material/PhoneMissed';
 import { Box, Stack, styled, Typography } from '@mui/material';
 
-type DataType = {
-  headerText: string;
-  bodyText: string;
-  missedCall: boolean;
+type Call = {
+  name: string;
+  phoneNumber: string;
+  missed: boolean;
+  createdAt: string;
 };
 
-interface CardProps {
-  data: DataType;
+interface CardListCardProps {
+  data: Call;
 }
 
-const CardBox = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  width: 318,
-  height: 68,
-  borderRadius: '8px'
-});
-
-const iconStyles = {
-  color: 'primary.dark'
-};
-
-// const missedCallStyles = {
-//   color: '#E85D5B'
-// };
-
-export default function CallListCard({ data }: CardProps) {
+export default function CallListCard({ data }: CardListCardProps) {
   return (
-    <CardBox bgcolor={data.missedCall ? '#FFE6E6' : '#FFFFFF'} mb={2}>
+    <Box
+      bgcolor={data.missed ? 'error.light' : 'white'}
+      mb={2}
+      display='flex'
+      justifyContent='space-evenly'
+      height='68px'
+      borderRadius='8px'>
       <Stack direction='row' justifyContent='space-around' alignItems='center' width='100%'>
-        {data.missedCall ? (
-          <ErrorOutlineOutlinedIcon sx={{ color: '#E85D5B', height: 26, width: 26 }} />
+        {data.missed ? (
+          <ErrorOutlineOutlinedIcon sx={{ color: 'error.main', height: 26 }} />
         ) : (
-          <ChatOutlinedIcon sx={iconStyles} />
+          <ChatOutlinedIcon sx={{ color: 'primary.dark' }} />
         )}
-        <Box mr={6}>
-          <Typography variant='h6' color={data.missedCall ? '#E85D5B' : 'primary.dark'}>
-            {data.headerText}
+        <Box textAlign='left' width='150px' mr={4}>
+          <Typography variant='h6' color={data.missed ? 'error.main' : 'primary.dark'}>
+            {data.name}
           </Typography>
-          <Typography variant='subtitle2' color={data.missedCall ? '#FC8483' : '#B9B6C1'}>
-            {data.bodyText}
+          <Typography variant='subtitle2' color={data.missed ? 'red' : 'text.secondary'}>
+            {data.phoneNumber}
           </Typography>
         </Box>
-        <Box>
-          {data.missedCall ? (
-            <PhoneMissedIcon sx={{ color: '#E85D5B', marginRight: 1 }} />
+        <Box width='50px' textAlign='center'>
+          {data.missed ? (
+            <PhoneMissedIcon sx={{ color: 'error.main', width: 35 }} />
           ) : (
-            <Typography sx={{ color: 'primary.dark' }}>14:23</Typography>
+            <Typography sx={{ color: 'primary.dark', marginBottom: 3 }}>
+              {data.createdAt}
+            </Typography>
           )}
         </Box>
       </Stack>
-    </CardBox>
+    </Box>
   );
 }

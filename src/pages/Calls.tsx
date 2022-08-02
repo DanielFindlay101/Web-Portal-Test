@@ -1,33 +1,44 @@
-import ChatOutlinedIcon from '@mui/icons-material/Chat';
-import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
-import PhoneMissedIcon from '@mui/icons-material/PhoneMissed';
-import { Box } from '@mui/material';
-
 import CallListCard from '../components/library/CallListCard';
 
-const iconStyles = {
-  color: 'primary.dark'
-};
+const callData = [
+  {
+    id: 1,
+    headerText: 'Jane Smith',
+    bodyText: '(+44) 7651 238 474',
+    missedCall: false
+  },
+  {
+    id: 2,
+    headerText: 'Contact Name',
+    bodyText: '(+44) 7651 238 474',
+    missedCall: false
+  },
+  {
+    id: 3,
+    headerText: 'Contact Name',
+    bodyText: '(+44) 7651 238 474',
+    missedCall: true
+  },
+  {
+    id: 4,
+    headerText: 'Contact Name',
+    bodyText: '(+44) 765 238 474',
+    missedCall: true
+  },
+  {
+    id: 5,
+    headerText: 'Contact Name',
+    bodyText: '(+44) 7651 238 474',
+    missedCall: false
+  }
+];
 
 const Calls = () => {
   return (
     <>
-      <Box>
-        <CallListCard
-          leftIcon={() => <ChatOutlinedIcon sx={iconStyles} />}
-          headerText='Jane Smith'
-          bodyText='(+44) 7653 123 786'
-          rightField={() => '15:00'}
-        />
-      </Box>
-      <Box>
-        <CallListCard
-          leftIcon={() => <ErrorOutlineOutlinedIcon sx={iconStyles} />}
-          headerText='John Doe'
-          bodyText='(+44) 985 234 990'
-          rightField={() => <PhoneMissedIcon />}
-        />
-      </Box>
+      {callData.map((data, id) => (
+        <CallListCard key={id} data={data} />
+      ))}
     </>
   );
 };

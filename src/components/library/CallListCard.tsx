@@ -1,12 +1,16 @@
-import ChatIcon from '@mui/icons-material/Chat';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import PhoneMissedIcon from '@mui/icons-material/PhoneMissed';
 import { Box, Stack, styled, Typography } from '@mui/material';
-import React from 'react';
 
-export interface CardProps {
-  leftIcon: () => React.ReactNode;
+type DataType = {
   headerText: string;
   bodyText: string;
-  rightField: () => React.ReactNode;
+  missedCall: boolean;
+};
+
+interface CardProps {
+  data: DataType;
 }
 
 const CardBox = styled(Box)({
@@ -17,20 +21,38 @@ const CardBox = styled(Box)({
   borderRadius: '8px'
 });
 
-export default function CallListCard({ leftIcon, headerText, bodyText, rightField }: CardProps) {
+const iconStyles = {
+  color: 'primary.dark'
+};
+
+// const missedCallStyles = {
+//   color: '#E85D5B'
+// };
+
+export default function CallListCard({ data }: CardProps) {
   return (
-    <CardBox bgcolor='#FFFFFF' mb={2}>
+    <CardBox bgcolor={data.missedCall ? '#FFE6E6' : '#FFFFFF'} mb={2}>
       <Stack direction='row' justifyContent='space-around' alignItems='center' width='100%'>
-        {leftIcon()}
+        {data.missedCall ? (
+          <ErrorOutlineOutlinedIcon sx={{ color: '#E85D5B', height: 26, width: 26 }} />
+        ) : (
+          <ChatOutlinedIcon sx={iconStyles} />
+        )}
         <Box mr={6}>
-          <Typography variant='h6' color='primary.dark'>
-            {headerText}
+          <Typography variant='h6' color={data.missedCall ? '#E85D5B' : 'primary.dark'}>
+            {data.headerText}
           </Typography>
-          <Typography variant='subtitle1' color='#B9B6C1' sx={{ fontSize: 12 }}>
-            {bodyText}
+          <Typography variant='subtitle2' color={data.missedCall ? '#FC8483' : '#B9B6C1'}>
+            {data.bodyText}
           </Typography>
         </Box>
-        {rightField()}
+        <Box>
+          {data.missedCall ? (
+            <PhoneMissedIcon sx={{ color: '#E85D5B', marginRight: 1 }} />
+          ) : (
+            <Typography sx={{ color: 'primary.dark' }}>14:23</Typography>
+          )}
+        </Box>
       </Stack>
     </CardBox>
   );
